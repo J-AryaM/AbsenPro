@@ -1,0 +1,12 @@
+# =====================================================================
+# uploads/izin/.htaccess
+# Pengamanan folder unggahan: file bukti hanya boleh DIBACA sebagai
+# berkas statis, tidak boleh DIEKSEKUSI sebagai skrip. Ini mencegah
+# seseorang meng-upload file .php berbahaya lalu menjalankannya.
+# =====================================================================
+
+# Nonaktifkan eksekusi PHP di folder ini (matikan handler & engine).
+php_flag engine off
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|cgi)$">
+    Require all denied
+</FilesMatch>

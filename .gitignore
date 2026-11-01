@@ -1,0 +1,68 @@
+# ==========================================
+# ANDROID STUDIO
+# ==========================================
+
+*.iml
+.gradle/
+.idea/
+**/build/
+local.properties
+.cxx/
+.externalNativeBuild/
+captures/
+.navigation/
+
+# File konfigurasi dan cache IDE
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+
+# ==========================================
+# ANDROID BUILD
+# ==========================================
+
+/build/
+**/build/
+app/release/
+app/debug/
+
+# ==========================================
+# BACKEND PHP
+# ==========================================
+
+# Konfigurasi database asli (berisi kredensial)
+/Backend_api/config/db.php
+
+# File upload pengguna saat aplikasi berjalan
+/Backend_api/uploads/izin/*
+!/Backend_api/uploads/izin/.gitkeep
+!/Backend_api/uploads/izin/.htaccess
+
+# File sementara
+*.tmp
+*.temp
+
+# ==========================================
+# ENVIRONMENT & CREDENTIALS
+# ==========================================
+
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# DEPENDENCIES
+# ==========================================
+
+vendor/
+node_modules/
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini

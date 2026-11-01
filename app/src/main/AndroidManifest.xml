@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Izin akses internet, wajib untuk memanggil Web Service PHP -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Izin GPS presisi tinggi (untuk absen masuk/pulang) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Izin membaca file dari galeri untuk upload bukti izin -->
+    <!-- READ_MEDIA_IMAGES dipakai untuk Android 13+ (API 33+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- READ_EXTERNAL_STORAGE untuk Android di bawah 13 (backward compatibility) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="AbsenPro"
+        android:theme="@style/Theme.AbsenPro"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <!--
+            usesCleartextTraffic="true" WAJIB diaktifkan karena API PHP
+            biasanya diakses lewat HTTP (bukan HTTPS) saat development
+            dengan IP lokal (XAMPP/Laragon). Untuk produksi sebaiknya
+            gunakan HTTPS dan hapus baris ini.
+        -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="AbsenPro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            FileProvider diperlukan agar bisa membaca URI file hasil
+            pilihan galeri (Intent.ACTION_GET_CONTENT) dengan aman
+            tanpa error FileUriExposedException.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
