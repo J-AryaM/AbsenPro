@@ -22,7 +22,7 @@ AbsenPro/
 ├── Database/
 │   ├── schema.sql           # struktur tabel MySQL
 │   ├── seed.sql             # data awal (admin + lokasi kantor)
-│   └── seed_admin.php       # cadangan reset password admin (hash valid)
+│   
 ├── Backend_api/             # REST API PHP  (lihat Backend_api/README.md)
 │   ├── config/db.php
 │   ├── helpers/             # response, cors, auth_middleware, geo
